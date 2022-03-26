@@ -9,6 +9,7 @@ Desafio do dia
   <style>
     body{
       background-image: url('/media/ecomm/images/BackgroundSignUp.jpg'); background-size: cover;
+        {{ challenge_all }}
     }
   </style>
 {% endblock head %}
@@ -16,7 +17,7 @@ Desafio do dia
 {% block content %}
 
 {% include 'nav.html' %}
-
+  {{ challenge_all }}
     {% comment %} <form method="POST"> {% csrf_token %}
         {{form.as_p}}
         <button type="submit">Sign Up</button>
@@ -25,8 +26,7 @@ Desafio do dia
     <div class="text-center mt-5 p-2">
         <form style="max-width:400px;margin:auto; background-color:rgba(255,255, 255, 0.7);" class="border p-5 " method="POST"> {% csrf_token %}
            <a href='{% url 'home' %}'>
-            <img src="{{ challenge.img }}" alt="Challenge" class="img-fluid" style="width: 20vw ;height: 20vw">
-            {{request.Challenge.name}}
+            <img src="/media/{{ challenge_img }}" alt="/{{ challenge_img }}" class="img-fluid" style="width: 20vw ;height: 20vw">
             </a>
                 <h1 class="mb-5 mt-2 font-weight-normal">{{ challenge.img }}</h1>
             <input type="text" id="challengename" name="cname"><br>

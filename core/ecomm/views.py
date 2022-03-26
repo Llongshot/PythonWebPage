@@ -153,12 +153,10 @@ def orderView(request):
 # Challenge Page
 @login_required
 def challengeView(request):
-    img = request.GET.get('img')
-    challenge = Product.get_by_category(img)
-    context = {
-        'challenge': challenge
-    }
-    print(img)
-    return render(request, 'ecomm/challenge.html', context)
+    Challenge_enabled = Challenge.objects.filter(enabled=1).latest('img')
+    challenge_img =  Challenge_enabled.img
+    return render(request, 'ecomm/challenge.html', {'challenge_img': challenge_img})
+
+
 
 

@@ -41,7 +41,7 @@ class Product(models.Model):
 
 class Challenge(models.Model):
     name = models.CharField(max_length=120)
-    img = models.ImageField(upload_to='ecomm/images/challenge', default='')
+    img = models.ImageField(upload_to='ecomm/images', default='')
     enabled = models.CharField(max_length=20, default='')
 
     @staticmethod
@@ -50,7 +50,8 @@ class Challenge(models.Model):
 
     @staticmethod
     def get_all_challenge():
-        return Challenge.objects.all()
+        challenge_all = Challenge.objects.all()
+        return render(request, {'challenge_all': challenge_all })
 
 
 class Order(models.Model):
