@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+
+{% block title %}--- PLANT SHOP ----{% endblock title %}
+
+{% block head %}
+
+    <style>
+         body {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        h1 {
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .navbar-brand {
+            font-size: 1.8rem;
+            font-family: 'Limelight', cursive;
+            font-weight: 600;
+        }
+
+        .nav-item {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        a {
+            text-decoration: none;
+            color: darkgreen;
+            display: inline;
+        }
+
+        a:hover{
+            color: darkgreen;
+            text-decoration: none;
+        }
+
+        .prod:hover {
+            color: white;
+        }
+    </style>
+
+{% endblock head %}
+
+{% block content %}
+    
+    {% include 'nav.html' %}
+
+    <!-- ADD CODE HERE -->
+    <div class="container-fluid" style="position: relative; top: -30vw;">
+        <img src="/media/ecomm/images/PlantShopHomeBanner.jpg"
+            alt="" class="img-fluid" style="width: 100vw;">
+        <div class="row my-4" style="background-color: #fff;">
+            <!-- FOR LARGER SCREEN SIZES -->
+            <div class="col-lg-2">
+                <div class="btn-group-vertical d-none d-lg-block border-end ms-5 mt-5 px-3 pt-4" role="group">
+                    <a href="/" type="button" class="btn btn-outline-dark prod">All</a>
+                    <a href="/?category=PL" type="button" class="btn btn-outline-dark prod">Plantas</a>
+                    <a href="/?category=FL" type="button" class="btn btn-outline-dark prod">Flores</a>
+                    <a href="/?category=PB" type="button" class="btn btn-outline-dark prod">Produtos Botânica</a>
+                </div>
+                <!-- FOR SMALLER SCREEN SIZES -->
+                <div class="btn-group d-block d-lg-none mt-3 px-0 py-4" role="group">
+                    <a href="/" type="button" class="btn btn-outline-dark prod">All</a>
+                    <a href="/?category=PL" type="button" class="btn btn-outline-dark prod">Plantas</a>
+                    <a href="/?category=FL" type="button" class="btn btn-outline-dark prod">Flores</a>
+                    <a href="/?category=FL" type="button" class="btn btn-outline-dark prod">Produtos Botânica</a>
+                    <hr>
+                </div>
+            </div>
+            <div class="col-lg-10">
+                <h1 class="display-3">Produtos</h1>
+                <div class="row my-4 container-fluid">
+                    <!--Iterable part starts-->
+                    {% for product in products %}
+                    <div class="col-sm-6 col-md-4 my-2">
+                        <a href="product/{{ product.id }}">
+                            <div class="card" style="width: 90%;">
+                                <img src="{{ product.img1.url }}" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h2 class="lead" style="font-weight: bold;">{{ product.title }}</h2>
+                                    <p class="card-text">${{ product.price }}</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    {% endfor %}
+                    <!--Iterable part ends-->
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

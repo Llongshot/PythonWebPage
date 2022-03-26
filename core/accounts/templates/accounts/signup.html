@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+
+{% block title %}Criação de Conta{% endblock title %}
+
+{% block head %}
+  <style>
+    body{
+      background-image: url('/media/ecomm/images/BackgroundSignUp.jpg'); background-size: cover;
+    }
+  </style>
+{% endblock head %}
+
+{% block content %}
+
+{% include 'nav.html' %}
+
+    {% comment %} <form method="POST"> {% csrf_token %}
+        {{form.as_p}}
+        <button type="submit">Sign Up</button>
+    </form> {% endcomment %}
+
+    <div class="text-center mt-5 p-2">
+        <form style="max-width:400px;margin:auto; background-color:rgba(255,255, 255, 0.7);" class="border p-5 " method="POST"> {% csrf_token %}
+           <a href='{% url 'home' %}'>
+            <img src="/media/ecomm/images/Logo.svg" alt="Logo" class="img-fluid" style="width: 10vw ;height: 10vw">
+            </a>
+                <h1 class="mb-5 mt-2 font-weight-normal">Registro</h1>
+
+                <!-- Username input -->
+            <div class="form-outline mb-4">
+              {{form.username}}
+            </div>
+
+            <!-- 2 column grid layout with text inputs for the first and last names -->
+            <div class="row mt-4 mb-4">
+              <div class="col">
+                <div class="form-outline">
+                  {{form.first_name}}
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-outline">
+                  {{form.last_name}}
+                </div>
+              </div>
+            </div>
+          
+            <!-- Email input -->
+            <div class="form-outline mb-4">
+              {{form.email}}
+            </div>
+          
+            <!-- Password input -->
+            <div class="form-outline mb-4">
+              {{form.password1}}
+            </div>
+
+             <!-- Password confirm input -->
+            <div class="form-outline mb-4">
+              {{form.password2}}
+            </div>
+
+          
+            <!-- Submit button -->
+            <button type="submit" class="btn btn-dark btn-block mt-4 mb-4">Sign up</button>
+            <p>Tem já conta? <a href="../login" class="link-primary">Login</a></p>
+            
+            {{form.errors}}
+            </div>
+            
+          </form>
+
+    </div>
+    
+    <script>
+
+      var form_fields = document.getElementsByTagName('input')
+		  form_fields[1].placeholder='Nome de utilizador';
+      form_fields[2].placeholder='Primeiro Nome';
+      form_fields[3].placeholder='Último nome';
+		  form_fields[4].placeholder='Email';
+		  form_fields[5].placeholder='Coloque a Password...';
+		  form_fields[6].placeholder='Coloque novamente a Password...';
+
+
+		  for (var field in form_fields){	
+		  	form_fields[field].className += ' form-control'
+		  }
+    </script>
+
+{% endblock content %}

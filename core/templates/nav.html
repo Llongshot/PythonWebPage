@@ -1,0 +1,95 @@
+
+<nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{% url 'home' %}">
+        <svg xmlns="http://www.w3.org/2000/svg" width="60" height="auto" viewBox="0 0 416.000000 416.000000"  preserveAspectRatio="xMidYMid meet">
+        <g transform="translate(0.000000,416.000000) scale(0.100000,-0.100000)"  fill=darkgreen stroke="none">
+        <path d="M2043 3291 c-50 -36 -83 -88 -98 -155 l-12 -51 -29 65 -30 64 -23
+        -32 c-13 -18 -25 -50 -28 -72 l-5 -38 -58 31 c-32 18 -62 29 -66 25 -4 -4 0
+        -35 8 -69 l15 -61 -79 7 c-82 7 -93 2 -58 -30 29 -26 25 -32 -27 -40 -27 -4
+        -74 -17 -107 -29 l-58 -22 125 -34 126 -34 -49 -28 c-68 -38 -70 -48 -13 -48
+        l48 0 -35 -17 c-55 -27 -164 -141 -197 -208 -56 -111 -54 -115 21 -62 36 26
+        66 44 66 41 0 -4 -21 -30 -47 -58 -45 -49 -110 -153 -101 -161 7 -8 122 52
+        162 84 21 17 40 31 43 31 2 0 -3 -13 -11 -29 -34 -65 -42 -181 -13 -181 7 0
+        40 28 74 62 l63 62 0 -31 c0 -32 18 -83 29 -83 3 0 21 23 39 51 18 27 47 58
+        65 69 l32 20 5 -45 c3 -24 8 -47 12 -50 8 -9 51 131 52 172 1 30 -4 39 -29 53
+        -16 9 -31 24 -33 34 -4 20 71 112 108 131 26 14 27 13 27 -13 0 -15 1 -49 2
+        -77 2 -35 -7 -76 -27 -135 -16 -47 -33 -105 -36 -130 l-6 -45 44 46 45 46 7
+        -76 c5 -42 8 -239 9 -439 0 -332 -1 -365 -17 -376 -32 -24 -39 -65 -32 -186 6
+        -108 5 -122 -22 -213 -32 -111 -28 -143 21 -166 43 -21 153 -27 159 -10 2 8 7
+        134 10 282 5 250 4 268 -13 285 -18 16 -19 47 -23 474 -4 427 -3 458 13 463
+        10 3 20 18 24 34 5 23 11 28 40 29 28 1 37 -4 55 -33 11 -19 30 -37 40 -40 41
+        -13 85 39 60 70 -16 20 -4 19 65 -5 32 -11 60 -18 62 -16 11 11 -35 61 -70 76
+        l-38 17 40 6 c22 3 52 14 67 26 30 23 83 28 103 9 11 -11 13 -10 9 2 -3 8 -19
+        25 -36 36 l-32 22 95 18 c52 10 95 21 95 24 0 14 -117 59 -184 71 -38 6 -104
+        9 -145 6 -56 -4 -67 -3 -41 4 95 25 351 21 480 -7 44 -9 -28 27 -80 41 l-45
+        12 77 8 c81 8 121 25 103 44 -18 18 -126 33 -195 28 l-65 -4 40 18 c22 10 46
+        19 53 19 6 0 12 5 12 10 0 6 -43 10 -108 10 -111 0 -230 -24 -280 -56 -13 -9
+        -25 -14 -27 -12 -6 5 124 111 200 163 81 56 106 77 55 48 -19 -11 -57 -33 -85
+        -49 l-50 -29 20 32 c38 60 130 165 185 210 40 33 48 44 30 39 -57 -16 -172
+        -81 -223 -127 l-56 -49 35 101 c19 55 34 103 34 105 0 22 -128 -86 -162 -137
+        -36 -53 -37 -27 -3 56 30 73 30 75 5 75 -30 0 -95 -35 -140 -77 -44 -39 -44
+        -40 -29 58 6 39 9 72 6 75 -2 2 -22 -9 -44 -25z"/>
+        </g>
+        </svg>
+                Plant Shop
+                    <a class="nav-link btn btn-dark" style="color: white;" href="{% url 'Challenge' %}">
+                        Desafio do Dia
+                    </a>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+                aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0"> </ul>
+                <span>
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item px-3">
+                            <a class="nav-link" href="{% url 'cart' %}">
+                                Meu Carrinho
+                                <!--To show no. of items in cart-->
+                                <span class="badge badge-info">{{ request.session.cart.keys|length }}</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="auto" fill="currentColor"
+                                    class="bi bi-cart2 ms-2" viewBox="0 0 16 16">
+                                    <path
+                                        d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
+                                </svg>
+                            </a>
+                        </li>
+
+                        {% if request.user.is_authenticated %}
+                        <li class="nav-item dropdown px-3">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                
+                                
+                                Bem-Vindo, {{request.user.username}}
+                                
+                                
+
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="auto" fill="currentColor"
+                                    class="bi bi-person-circle ms-2" viewBox="0 0 16 16">
+                                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                                    <path fill-rule="evenodd"
+                                        d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+                                </svg>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                                <li><a class="dropdown-item" href="{% url 'profile' %}">Detalhe da Conta</a></li>
+                                <li><a class="dropdown-item" href="{% url 'Logout' %}">Log out</a></li>
+                                <li><a class="dropdown-item" href="{% url 'orders' %}">Meus Pedidos</a></li>
+                            </ul>
+                        </li>
+                        {% else %}
+                            <li class="nav-item px-3">
+                                <a class="nav-link btn btn-dark" style="color: white;" href="{% url 'Login' %}">
+                                    Login
+                                </a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </span>
+            </div>
+        </div>
+    </nav>

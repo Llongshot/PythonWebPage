@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block title %}Login{% endblock title %}
+
+
+
+{% block head %}
+
+<style>
+
+    body{
+        background-image: url('/media/ecomm/images/BackgroundLogin.jpg'); background-size: cover;
+    }
+
+</style> 
+
+{% endblock head %}
+
+{% block content %}
+
+{% include 'nav.html' %}
+
+
+    
+    {% comment %} <form method="POST"> {% csrf_token %}
+
+        {{form.as_p}}
+        <button type="submit"> Logar </button>
+
+    </form> {% endcomment %}
+
+    <div class="text-center mt-5">
+        <form style="max-width:340px;margin:auto; background-color:rgba(255,255, 255, 0.7);" class="border p-5 " method="POST"> {% csrf_token %}
+            <a href='{% url 'home' %}'>
+            <img src="/media/ecomm/images/Logo.svg" alt="Logo" class="img-fluid" style="width: 10vw ;height: 10vw">
+            </a>
+            <h1 class="mb-3 mt-2 font-weight-normal">Login</h1>
+            
+            {{form.username}}
+            <br>
+            {{form.password}}
+            <div class="mt-5">
+                <button class="btn btn-lg btn-dark btn-block" type="submit">Login</button>
+            </div>
+            <hr>
+            <div >
+                <a href="{% url 'Sign Up' %}" style="font-size:15px;" class="btn btn-lg btn-outline-dark btn-block">Criação de conta</a>
+            </div>
+        </form>
+    </div>
+
+    <script>
+
+        var form_fields = document.getElementsByTagName('input')
+        form_fields[1].placeholder = 'Enter your username';
+        form_fields[2].placeholder = 'Enter your password';
+
+        for (var fields in form_fields){
+            form_fields[fields].className += ' form-control mt-1'
+        }
+
+
+    </script>
+
+
+{% endblock content %}
