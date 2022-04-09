@@ -7,6 +7,16 @@ Desafio do dia
 
 {% block head %}
   <style>
+        .navbar-brand {
+            font-size: 1.8rem;
+            font-family: 'Limelight', cursive;
+            font-weight: 600;
+        }
+
+        .nav-item {
+            font-family: 'Poppins', sans-serif;
+        }
+
     body{
       background-image: url('/media/ecomm/images/BackgroundSignUp.jpg'); background-size: cover;
         {{ challenge_all }}
@@ -24,25 +34,69 @@ Desafio do dia
     </form> {% endcomment %}
 
     <div class="text-center mt-5 p-2">
-        <form style="max-width:400px;margin:auto; background-color:rgba(255,255, 255, 0.7);" class="border p-5 " method="POST"> {% csrf_token %}
-           <a href='{% url 'home' %}'>
-            <img src="/media/{{ challenge_img }}" alt="/{{ challenge_img }}" class="img-fluid" style="width: 20vw ;height: 20vw">
-            </a>
-                <h1 class="mb-5 mt-2 font-weight-normal">{{ challenge.img }}</h1>
-            <input type="text" id="challengename" name="cname"><br>
-            <input type="submit" class="btn btn-dark btn-block mt-4 mb-4" value="Submeter" >
-            </form>
-            </div>
-          </form>
+      <form id="challenge-form" class="challenge-form border p-5 " method="POST"> {% csrf_token %}
+        <span class="challenge-result" id="challenge-result"></span>
+        <div id="challenge-block">
+          <a href='{% url 'home' %}'>
+            <img src="/media/{{ challenge_img }}" alt="/{{ challenge_img }}" class="img-fluid">
+          </a>
+          <h1 class="mb-5 mt-2 font-weight-normal">{{ challenge.img }}</h1>
+          <input type="text" id="challenge-name" name="cname"><br/>
+          <input type="hidden" id="right-challenge-name" name="rname" value="{{ challenge_name }}"><br/>
+          <input type="submit" id="submit-image" class="btn btn-dark btn-block mt-4 mb-4" value="Submeter" />
+        </div>
+      </form>
     </div>
 
     <script>
-        const form_fields = document.getElementsByTagName('input');
-            form_fields[1].placeholder='';
+        const challengeBlock = document.getElementById('challenge-block'),
+              challengeResult = document.getElementById('challenge-result'),
+              challengeSubmit = document.getElementById("submit-image"),
+              challengeText = document.getElementById("challenge-name"),
+              rightChallengeText = document.getElementById("right-challenge-name"),
+              form_fields = document.getElementsByTagName('input');
+        
+        form_fields[1].placeholder='';
+        
+        function clickHandler(e) {
+          e.preventDefault();
+          challengeBlock.style.display = "none";
+          
+          challengeResult.innerHTML = (challengeText.value.toLowerCase()===rightChallengeText.value.toLowerCase()
+          ?"A resposta encontra-se correcta"
+          :"A resposta encontra-se incorrecta");
 
-		  for (const field in form_fields){
-		  	form_fields[field].className += ' form-control'
-		  }
+          challengeResult.style.display = "block";
+
+          setTimeout(() => {
+            window.location.href="/";
+          }, 2000);
+        }
+
+        for (const field in form_fields){
+          form_fields[field].className += ' form-control'
+        }
+    
+        challengeSubmit.addEventListener('click', clickHandler);
     </script>
+    <style>
+      .challenge-result {
+        display:none;
+        font-weight:600;
+        line-height:1.2;
+        font-size:23px;
+      }
+
+      .challenge-form {
+        max-width:400px;
+        margin:auto; 
+        background-color:rgba(255,255, 255, 0.7);
+      }
+
+      .challenge-form img {
+        width: 20vw;
+        height: 20vw;
+      }
+    </style>
 
 {% endblock content %}
