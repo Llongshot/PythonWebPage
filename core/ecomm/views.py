@@ -155,7 +155,10 @@ def orderView(request):
 def challengeView(request):
     Challenge_enabled = Challenge.objects.filter(enabled=1).latest('img')
     challenge_img =  Challenge_enabled.img
-    return render(request, 'ecomm/challenge.html', {'challenge_img': challenge_img})
+    challenge_name = Challenge_enabled.name
+    return render(request, 'ecomm/challenge.html', {'challenge_img': challenge_img, 'challenge_name': challenge_name})
+
+
 
 
 
