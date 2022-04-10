@@ -41,6 +41,7 @@ INSTALLED_APPS = [
 
     'ecomm',
     'accounts',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -121,7 +122,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATIC_URL = '/static/'
+#STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 # Default primary key field type
@@ -131,4 +132,24 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # MANAGING MEDIA
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/media/'
+#MEDIA_URL = '/media/'
+
+# AZURE STORAGE
+#DEFAULT_FILE_STORAGE = 'storages.backends.azure_storage.AzureStorage'
+#STATICFILES_STORAGE  = 'storages.backends.azure_storage.AzureStorage'
+DEFAULT_FILE_STORAGE = 'core.custom_azure.AzureMediaStorage'
+STATICFILES_STORAGE  = 'core.custom_azure.AzureStaticStorage'
+
+AZURE_STORAGE_KEY = "jx5Kzq5I7Q/W6uvsN+vCIjChtqex9rKP9Dy1aPhNjXFPxITWb7sP5h2X58SIs8weKPa5K82iP7kSx4ARiRYdDA=="
+AZURE_ACCOUNT_NAME = "webstorageccount"
+AZURE_MEDIA_CONTAINER = 'media'
+AZURE_STATIC_CONTAINER = 'static'
+
+AZURE_CUSTOM_DOMAIN = f'{AZURE_ACCOUNT_NAME}.blob.core.windows.net'  # Files URL
+AZURE_ACCOUNT_KEY = "jx5Kzq5I7Q/W6uvsN+vCIjChtqex9rKP9Dy1aPhNjXFPxITWb7sP5h2X58SIs8weKPa5K82iP7kSx4ARiRYdDA=="
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_URL = f'https://{AZURE_CUSTOM_DOMAIN}/{AZURE_STATIC_CONTAINER}/'
+MEDIA_URL = f'https://{AZURE_CUSTOM_DOMAIN}/{AZURE_MEDIA_CONTAINER}/'
+
+#STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+#any static paths you want to publish
